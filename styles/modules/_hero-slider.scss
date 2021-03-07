@@ -1,0 +1,104 @@
+.swiper-container {
+  // width: 100%;
+  // height: 100%;
+  overflow: visible !important;
+}
+
+.swiper-slide {
+  height: 500px;
+  overflow: hidden;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;//上下左右が親要素のdivと同じになる。
+    transform: scale(1.3);
+    transition: transform 1.9s ease;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,61,125,0.1);
+
+  }
+
+  &-active {
+    & > img {
+      transform: none;
+    }
+
+    & .hero__title {
+      opacity: 1;
+      transform: (-50%, -50%);
+    }
+  }
+}
+
+.hero {
+  overflow:hidden;
+  padding-top: $header-height;
+  &__title{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% + 20px));
+    color: $cWhite;
+    font-size: 25px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease 1s, transform 0.3s ease 1s;
+  }
+  &__footer {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 22px;
+    height: 68px;
+    overflow: hidden;
+  }
+  &__downarrow {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 6px;
+    @include 
+    animation(
+      $name: kf-arrow-anime,
+      $duration: 2s,
+      $timing-function: linear,
+      $delay: 0s,
+      $iteration-count: infinite,
+      $direction: normal,
+      $fill-mode: forwards
+    )}
+    
+    &__scrolltext {
+    position: absolute;
+    transform: rotate(90deg);
+    color: rgba(255,255,255,0.7);
+    left: -8px;
+    top: 11px;
+    font-size: 1.2em;
+
+  }
+}
+
+@keyframes kf-arrow-anime {
+  0%,
+  50%,
+  100% {
+    transform: translateY(-10%);
+  }
+  30% {
+    transform: none;
+  }
+}

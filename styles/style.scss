@@ -1,0 +1,36 @@
+@import 'modules/variables';
+@import 'modules/mixin';
+@import 'modules/appear';
+@import 'modules/hero-slider';
+@import 'modules/text-animation';
+@import 'modules/image-slide';
+@import 'modules/button';
+@import 'modules/mobile-menu';
+
+@import 'breakpoints/base';
+
+@media (min-width: 480px){ //@media screen = 画面表示時 print = プリント時 all = 全部（この場合書かなくてOK）
+  @import 'breakpoints/480up'; //スマホを横に傾けたとき(ランドスケープ)の適用サイズ
+}
+
+@media (min-width: 600px){ 
+  @import 'breakpoints/600up'; //タブレットの適用スタイル
+}
+
+@media (min-width: 960px){ 
+  @import 'breakpoints/960up'; //タブレットのランドスケープ適用スタイルor小さいデスクトップ
+}
+
+@media (min-width: 1280px){ 
+  @import 'breakpoints/1280up'; //通常PC適用
+}
+
+@media (min-resolution: 192dpi) //高解像度のディスプレイでのみ適用
+,(-webkit-min-device-pixel-ratio: 2){ //通常の２倍の解像度のディスプレイでのみ適用
+  @import 'breakpoints/2x'; //高解像度PC適用
+  
+}
+
+@media print{ 
+  @import 'breakpoints/print'; //印刷時のみ適用
+}
